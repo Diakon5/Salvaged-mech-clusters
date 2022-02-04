@@ -88,7 +88,7 @@
       <li>GunTurrets</li>
     </researchPrerequisites>
   </ThingDef>
-
+  
   <ThingDef ParentName="BaseWeaponTurret">
     <defName>SMC_Gun_MiniTurretMech</defName>
     <label>salvaged mini-slugger</label>
@@ -99,11 +99,11 @@
     </graphicData>
     <uiIconScale>2</uiIconScale>
     <statBases>
-      <AccuracyTouch>0.80</AccuracyTouch>
-      <AccuracyShort>0.58</AccuracyShort>
-      <AccuracyMedium>0.38</AccuracyMedium>
-      <AccuracyLong>0.18</AccuracyLong>
-      <RangedWeapon_Cooldown>5.1</RangedWeapon_Cooldown>
+      <AccuracyTouch>0.82</AccuracyTouch>
+      <AccuracyShort>0.59</AccuracyShort>
+      <AccuracyMedium>0.39</AccuracyMedium>
+      <AccuracyLong>0.21</AccuracyLong>
+      <RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
       <Mass>5</Mass>
       <Flammability>0</Flammability>
@@ -112,12 +112,11 @@
       <li>
         <verbClass>Verb_Shoot</verbClass>
         <defaultProjectile>Bullet_MiniSlug</defaultProjectile>
-        <range>40</range>
+        <range>41</range>
         <soundCast>Shot_MiniSlug</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
         <burstShotCount>1</burstShotCount>
       </li>
     </verbs>
-  </ThingDef>
 </Defs>
