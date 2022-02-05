@@ -41,7 +41,7 @@
     <damageMultipliers>
       <li>
         <damageDef>Flame</damageDef>
-        <multiplier>0</multiplier>
+        <multiplier>0.3</multiplier>
       </li>
     </damageMultipliers>
     <tickerType>Normal</tickerType>
@@ -74,7 +74,7 @@
 	<designationCategory>Security</designationCategory>
     <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
     <building>
-      <combatPower>50</combatPower>   <!-- same as a scavenger -->
+      <combatPower>50</combatPower>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>SMC_Gun_MiniTurretMech</turretGunDef>
       <turretBurstCooldownTime>2.5</turretBurstCooldownTime>
@@ -89,12 +89,12 @@
     </researchPrerequisites>
   </ThingDef>
   
-  <ThingDef ParentName="BaseWeaponTurret">
+    <ThingDef ParentName="BaseWeaponTurret">
     <defName>SMC_Gun_MiniTurretMech</defName>
     <label>salvaged mini-slugger</label>
     <description>An automatic turret-mounted slug-thrower.</description>
     <graphicData>
-      <texPath>Things/Building/Mech/TurretMechMini_Top</texPath>
+      <texPath>Things/Building/Security/SMC_TurretMechMini_Top</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <uiIconScale>2</uiIconScale>
@@ -120,4 +120,183 @@
       </li>
     </verbs>
 	</ThingDef>
+	
+	<!-- Auto charge blaster -->
+	
+	<ThingDef ParentName="AutocannonTurret">
+    <defName>SMC_Turret_AutoChargeBlaster</defName>
+    <label>salvaged light charge turret</label>
+    <description>A large turret base mounted with a salvaged light charge blaster mounted atop. Requires power, but it's more durable than the mechanoid variant. It cannot sense targets at very short ranges.</description>
+	<uiIconPath>Things/Building/Security/SMC_TurretMechMini_MenuIcon</uiIconPath>
+    <uiIconScale>1.0</uiIconScale>
+	<costList>
+      <Steel>350</Steel>
+      <Plasteel>40</Plasteel>
+      <ComponentIndustrial>6</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <MaxHitPoints>400</MaxHitPoints>
+      <Flammability>0.3</Flammability>
+	  <WorkToBuild>15000</WorkToBuild>
+      <Mass>100</Mass>
+      <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
+      <Beauty>-20</Beauty>
+    </statBases>
+    <damageMultipliers>
+      <li>
+        <damageDef>Flame</damageDef>
+        <multiplier>0.3</multiplier>
+      </li>
+    </damageMultipliers>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>240</wickTicks>
+        <explosiveRadius>5.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <chanceNeverExplodeFromDamage>0.6</chanceNeverExplodeFromDamage>
+      </li>
+		<li Class="CompProperties_Forbiddable"/>
+		<li Class="CompProperties_Power">
+			<compClass>CompPowerTrader</compClass>
+			<basePowerConsumption>400</basePowerConsumption>
+		</li>
+		<li Class="CompProperties_Flickable"/>
+		<li Class="CompProperties_Breakdownable"/>
+    </comps>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <building>
+      <combatPower>150</combatPower>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>SMC_Gun_ChargeBlasterLightTurret</turretGunDef>
+      <turretBurstCooldownTime>7.5</turretBurstCooldownTime>
+      <turretTopDrawSize>1.75</turretTopDrawSize>
+      <turretTopOffset>(0, 0.05)</turretTopOffset>
+      <soundAmbient>MechTurretBig_Call</soundAmbient>
+    </building>>
+	<researchPrerequisites>
+      <li>HeavyTurrets</li>
+    </researchPrerequisites>		
+  </ThingDef>
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>SMC_Gun_ChargeBlasterLightTurret</defName> 
+    <label>light charge blaster</label>
+    <description>A pulse-charged rapid-fire blaster for area fire.</description>
+    <graphicData>
+      <texPath>Things/Building/Security/SMC_ChargeBlasterLight</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<uiIconScale>2</uiIconScale>
+    <statBases>
+	  <AccuracyTouch>0.18</AccuracyTouch>
+      <AccuracyShort>0.26</AccuracyShort>
+      <AccuracyMedium>0.26</AccuracyMedium>
+      <AccuracyLong>0.08</AccuracyLong>
+	  <RangedWeapon_Cooldown>5.5</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>5</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>Bullet_ChargeBlasterHeavy</defaultProjectile>
+        <minRange>4.9</minRange>
+        <range>42.3</range>
+        <ticksBetweenBurstShots>9</ticksBetweenBurstShots>
+        <burstShotCount>9</burstShotCount>
+        <soundCast>Shot_ChargeBlaster</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+  </ThingDef>
+  <!--Heavy Charge Turret-->
+  	<!--<ThingDef ParentName="AutocannonTurret">
+    <defName>SMC_Turret_AutoChargeBlasterHeavy</defName>
+    <label>salvaged heavy charge turret</label>
+    <description>A large turret base mounted with a heavy charge blaster salvaged from a Centipede. Requires power, and has shorter range compared to the light variant, but it's more devastating. It cannot sense targets at very short ranges.</description>
+	<uiIconPath>Things/Building/Security/SMC_TurretMechMini_MenuIcon</uiIconPath>
+    <uiIconScale>1.0</uiIconScale>
+	<costList>
+      <Steel>400</Steel>
+      <Plasteel>60</Plasteel>
+      <ComponentIndustrial>6</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <MaxHitPoints>400</MaxHitPoints>
+      <Flammability>0.3</Flammability>
+	  <WorkToBuild>15000</WorkToBuild>
+      <Mass>100</Mass>
+      <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
+      <Beauty>-20</Beauty>
+    </statBases>
+    <damageMultipliers>
+      <li>
+        <damageDef>Flame</damageDef>
+        <multiplier>0.3</multiplier>
+      </li>
+    </damageMultipliers>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>240</wickTicks>
+        <explosiveRadius>5.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <chanceNeverExplodeFromDamage>0.6</chanceNeverExplodeFromDamage>
+      </li>
+		<li Class="CompProperties_Forbiddable"/>
+		<li Class="CompProperties_Power">
+			<compClass>CompPowerTrader</compClass>
+			<basePowerConsumption>400</basePowerConsumption>
+		</li>
+		<li Class="CompProperties_Flickable"/>
+		<li Class="CompProperties_Breakdownable"/>
+    </comps>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <building>
+      <combatPower>190</combatPower>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>SMC_Gun_ChargeBlasterHeavyTurret</turretGunDef>
+      <turretBurstCooldownTime>7.5</turretBurstCooldownTime>
+      <turretTopDrawSize>1.75</turretTopDrawSize>
+      <turretTopOffset>(0, 0.05)</turretTopOffset>
+      <soundAmbient>MechTurretBig_Call</soundAmbient>
+    </building>>
+	<researchPrerequisites>
+      <li>HeavyTurrets</li>
+    </researchPrerequisites>		
+  </ThingDef>
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>SMC_Gun_ChargeBlasterHeavyTurret</defName> 
+    <label>heavy charge blaster</label>
+    <description>A pulse-charged rapid-fire blaster for area fire.</description>
+    <graphicData>
+      <texPath>Things/Building/Security/SMC_ChargeBlasterHeavy</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<uiIconScale>2</uiIconScale>
+    <statBases>
+	  <AccuracyTouch>0.20</AccuracyTouch>
+      <AccuracyShort>0.28</AccuracyShort>
+      <AccuracyMedium>0.28</AccuracyMedium>
+      <AccuracyLong>0.08</AccuracyLong>
+	  <RangedWeapon_Cooldown>5.5</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>5</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>Bullet_ChargeBlasterHeavy</defaultProjectile>
+        <minRange>4.9</minRange>
+        <range>35.2</range>
+        <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+        <burstShotCount>12</burstShotCount>
+        <soundCast>Shot_ChargeBlaster</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+  </ThingDef>-->
 </Defs>
