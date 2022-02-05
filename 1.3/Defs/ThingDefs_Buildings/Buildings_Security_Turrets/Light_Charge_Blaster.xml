@@ -6,6 +6,9 @@
     <defName>SMC_Turret_AutoChargeBlaster</defName>
     <label>salvaged light charge turret</label>
     <description>A large turret base mounted with a salvaged light charge blaster mounted atop. Requires power, but it's more durable than the mechanoid variant. It cannot sense targets at very short ranges.</description>
+	<graphicData>
+		<drawSize>(1.8, 1.8)</drawSize>
+	</graphicData>
 	<uiIconPath>Things/Building/Security/SMC_TurretMechMini_MenuIcon</uiIconPath>
     <uiIconScale>1.0</uiIconScale>
 	<costList>
