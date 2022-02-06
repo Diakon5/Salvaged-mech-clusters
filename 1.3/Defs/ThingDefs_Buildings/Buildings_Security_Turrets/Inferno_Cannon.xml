@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!-- Auto charge blaster -->
+	
+	<ThingDef ParentName="AutocannonTurret">
+    <defName>SMC_Turret_InfernoCannon</defName>
+    <label>makeshift inferno cannon</label>
+    <description>A large turret base with a salvaged inferno cannon mounted atop. Requires power, very unstable due to chemfuel canisters</description>
+	<graphicData>
+		<drawSize>(1.8, 1.8)</drawSize>
+	</graphicData>
+	<uiIconPath>Things/Building/Security/SMC_TurretMechMini_MenuIcon</uiIconPath>
+    <uiIconScale>1.0</uiIconScale>
+	<costList>
+      <Steel>350</Steel>
+      <Plasteel>40</Plasteel>
+	  <Chemfuel>120</Chemfuel>
+      <ComponentIndustrial>6</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <MaxHitPoints>400</MaxHitPoints>
+      <Flammability>0.5</Flammability>
+	  <WorkToBuild>15000</WorkToBuild>
+      <Mass>100</Mass>
+      <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
+      <Beauty>-20</Beauty>
+    </statBases>
+    <damageMultipliers>
+      <li>
+        <damageDef>Flame</damageDef>
+        <multiplier>0.3</multiplier>
+      </li>
+    </damageMultipliers>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>240</wickTicks>
+        <explosiveRadius>5.9</explosiveRadius>
+        <explosiveDamageType>Flame</explosiveDamageType>
+        <chanceNeverExplodeFromDamage>0.2</chanceNeverExplodeFromDamage>
+		<preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+        <preExplosionSpawnChance>1</preExplosionSpawnChance>
+      </li>
+		<li Class="CompProperties_Forbiddable"/>
+		<li Class="CompProperties_Power">
+			<compClass>CompPowerTrader</compClass>
+			<basePowerConsumption>400</basePowerConsumption>
+		</li>
+		<li Class="CompProperties_Flickable"/>
+		<li Class="CompProperties_Breakdownable"/>
+		<li Class="CompProperties_Refuelable">
+			<fuelLabel>Fuel Charges</fuelLabel>
+			<fuelGizmoLabel>Shots remaining</fuelGizmoLabel>
+			<outOfFuelMessage>Cannot shoot: Out of fuel</outOfFuelMessage>
+			<fuelFilter><thingDefs><li>Chemfuel</li></thingDefs></fuelFilter>
+			<fuelCapacity>20</fuelCapacity>       <!-- 20 bursts -->
+			<fuelMultiplier>0.20</fuelMultiplier> <!-- 5 chemfuel per shot, 120 per full rearm -->
+			<initialFuelPercent>1</initialFuelPercent>
+			<autoRefuelPercent>0.5</autoRefuelPercent>
+			<showFuelGizmo>true</showFuelGizmo>
+			<minimumFueledThreshold>1</minimumFueledThreshold>
+			<factorByDifficulty>false</factorByDifficulty>
+			<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+			<fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+      </li>
+    </comps>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <building>
+      <combatPower>150</combatPower>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>SMC_Gun_InfernoCannonTurret</turretGunDef>
+      <turretBurstCooldownTime>8</turretBurstCooldownTime>
+      <turretTopDrawSize>1.75</turretTopDrawSize>
+      <turretTopOffset>(0, 0.05)</turretTopOffset>
+      <soundAmbient>MechTurretBig_Call</soundAmbient>
+    </building>
+	<researchPrerequisites>
+      <li>HeavyTurrets</li>
+	  <li>BiofuelRefining</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="Gun_InfernoCannonBase">
+    <defName>SMC_Gun_InfernoCannonTurret</defName>
+    <destroyOnDrop>true</destroyOnDrop>
+	<graphicData>
+      <texPath>Things/Building/Security/SMC_InfernoCannon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <AccuracyLong>0.66</AccuracyLong>
+    </statBases>
+    <weaponTags>
+      <li>TurretGun</li>
+    </weaponTags>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_InfernoCannon</defaultProjectile>
+        <forcedMissRadius>4.6</forcedMissRadius>
+        <ai_AvoidFriendlyFireRadius>3</ai_AvoidFriendlyFireRadius>
+        <warmupTime>0</warmupTime>
+        <minRange>5.2</minRange>
+        <range>34.9</range>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>InfernoCannon_Fire</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>14</muzzleFlashScale>
+      </li>
+    </verbs>
+  </ThingDef>
+</Defs>
