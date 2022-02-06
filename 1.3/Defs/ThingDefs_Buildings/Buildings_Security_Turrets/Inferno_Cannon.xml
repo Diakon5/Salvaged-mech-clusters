@@ -52,8 +52,8 @@
 			<fuelGizmoLabel>Shots remaining</fuelGizmoLabel>
 			<outOfFuelMessage>Cannot shoot: Out of fuel</outOfFuelMessage>
 			<fuelFilter><thingDefs><li>Chemfuel</li></thingDefs></fuelFilter>
-			<fuelCapacity>20</fuelCapacity>       <!-- 20 bursts -->
-			<fuelMultiplier>0.20</fuelMultiplier> <!-- 5 chemfuel per shot, 120 per full rearm -->
+			<fuelCapacity>120</fuelCapacity>       <!-- 8 bursts -->
+			<fuelMultiplier>1</fuelMultiplier> <!-- 1 chemfuel per unit, 120 per full rearm -->
 			<initialFuelPercent>1</initialFuelPercent>
 			<autoRefuelPercent>0.5</autoRefuelPercent>
 			<showFuelGizmo>true</showFuelGizmo>
@@ -79,15 +79,24 @@
     </researchPrerequisites>
   </ThingDef>
 
-  <ThingDef ParentName="Gun_InfernoCannonBase">
+  <ThingDef ParentName="BaseWeaponTurret">
     <defName>SMC_Gun_InfernoCannonTurret</defName>
-    <destroyOnDrop>true</destroyOnDrop>
+	<label>salvaged inferno cannon</label>
+	<description>An automatic turret-mounted fire-charge launcher</description>
 	<graphicData>
       <texPath>Things/Building/Security/SMC_InfernoCannon</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
+	<uiIconScale>2</uiIconScale>
     <statBases>
-      <AccuracyLong>0.66</AccuracyLong>
+      <AccuracyTouch>0.20</AccuracyTouch>
+      <AccuracyShort>0.20</AccuracyShort>
+      <AccuracyMedium>0.15</AccuracyMedium>
+      <AccuracyLong>0.05</AccuracyLong>
+      <RangedWeapon_Cooldown>8</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>5</Mass>
+      <Flammability>0</Flammability>
     </statBases>
     <weaponTags>
       <li>TurretGun</li>
@@ -106,6 +115,7 @@
         <soundCast>InfernoCannon_Fire</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
         <muzzleFlashScale>14</muzzleFlashScale>
+		<consumeFuelPerShot>15</consumeFuelPerShot>
       </li>
     </verbs>
   </ThingDef>
