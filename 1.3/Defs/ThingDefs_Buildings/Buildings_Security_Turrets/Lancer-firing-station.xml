@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-
-	<!-- Salvaged mini slugger-->
-	<ThingDef ParentName="BuildingBase">
-    <defName>SMC_AutoMiniTurret</defName>
-    <label>salvaged mini-slugger turret</label>
-    <description>A mini-slugger turret, put together from a mix of mechanoid and mundane parts. Requires external power, but it's more sturdy and slightly better calibrated, resulting in better accuracy, with slight loss of range. May explode when damaged</description>
+    <ThingDef ParentName="BuildingBase">
+    <defName>SMC_LancerTurret</defName>
+    <label>"Lancer" turret</label>
+    <description>A lancer corpse, strapped onto a turret base and jury-rigged with wires and triggers, to allow its charge lance to be operated. Fragile, requires power and a person to man it, but deadly.</description>
     <thingClass>Building_TurretGun</thingClass>
     <drawerType>MapMeshAndRealTime</drawerType>
     <graphicData>
-      <texPath>Things/Building/Security/SMC_TurretMechMini_Base</texPath>
+      <texPath>Things/Building/Security/SMC_LancerTurret_Base</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(1,1)</drawSize>
-      <drawOffset>(0,0,-0.11)</drawOffset>
+      <drawSize>(3,3)</drawSize>
+      <drawOffset>(0,0,0)</drawOffset>
       <damageData>
         <rect>(0.2,0.2,0.6,0.6)</rect>
       </damageData>
@@ -21,17 +19,19 @@
         <offset>(0,0,0)</offset>
       </shadowData>
     </graphicData>
-    <uiIconPath>Things/Building/Security/SMC_TurretMechMini_MenuIcon</uiIconPath>
-    <uiIconScale>1.0</uiIconScale>
+    <uiIconPath>Things/Building/Security/SMC_LancerTurret_MenuIcon</uiIconPath>
+    <uiIconScale>1.5</uiIconScale>
     <minifiedDef>MinifiedThing</minifiedDef>
     <altitudeLayer>Building</altitudeLayer>
     <stealable>false</stealable>
-    <rotatable>false</rotatable>
+    <rotatable>true</rotatable>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
 	<thingCategories>
       <li>BuildingsSecurity</li>
     </thingCategories>
     <statBases>
-      <MaxHitPoints>150</MaxHitPoints>
+      <MaxHitPoints>80</MaxHitPoints>
       <Flammability>0.3</Flammability>
 	  <WorkToBuild>1800</WorkToBuild>
       <Mass>10</Mass>
@@ -52,13 +52,14 @@
         <explosiveDamageType>Bomb</explosiveDamageType>
         <chanceNeverExplodeFromDamage>0.6</chanceNeverExplodeFromDamage>
       </li>
-	  <li Class="CompProperties_Forbiddable"/>
       <li Class="CompProperties_Power">
         <compClass>CompPowerTrader</compClass>
-        <basePowerConsumption>90</basePowerConsumption>
+        <basePowerConsumption>200</basePowerConsumption>
       </li>
       <li Class="CompProperties_Flickable"/>
-      <li Class="CompProperties_Breakdownable"/>
+        <li Class="CompProperties_Mannable">
+        <manWorkType>Violent</manWorkType>
+      </li>
     </comps>
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
@@ -66,43 +67,44 @@
     <hasTooltip>true</hasTooltip>
 	<costList>
 		  <Steel>60</Steel>
-		  <Plasteel>20</Plasteel>
-		  <ComponentIndustrial>3</ComponentIndustrial>
+		  <Corpse_Mech_Lancer>1</Corpse_Mech_Lancer>
+		  <ComponentIndustrial>1</ComponentIndustrial>
 		</costList>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 	<designationCategory>Security</designationCategory>
     <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
     <building>
       <combatPower>50</combatPower>
-      <ai_combatDangerous>true</ai_combatDangerous>
-      <turretGunDef>SMC_Gun_MiniTurretMech</turretGunDef>
-      <turretBurstCooldownTime>2.5</turretBurstCooldownTime>
-      <soundAmbient>MechTurretSmall_Call</soundAmbient>
+      <turretGunDef>SMC_Gun_LancerTurret</turretGunDef>
+      <turretBurstCooldownTime>4.8</turretBurstCooldownTime>
+      <turretTopDrawSize>1.75</turretTopDrawSize>
+      <turretTopOffset>(0, 0.05)</turretTopOffset>
     </building>
 	<placeWorkers>
-      <li>PlaceWorker_TurretTop</li>
-      <li>PlaceWorker_ShowTurretRadius</li>
+        <li>PlaceWorker_TurretTop</li>
+        <li>PlaceWorker_ShowTurretRadius</li>
+        <li>PlaceWorker_PreventInteractionSpotOverlap</li>
     </placeWorkers>
 	<researchPrerequisites>
       <li>GunTurrets</li>
     </researchPrerequisites>
   </ThingDef>
-  
+
     <ThingDef ParentName="BaseWeaponTurret">
-    <defName>SMC_Gun_MiniTurretMech</defName>
-    <label>salvaged mini-slugger</label>
-    <description>An automatic turret-mounted slug-thrower.</description>
+    <defName>SMC_Gun_LancerTurret</defName>
+    <label>Lancer Lance</label>
+    <description>A lancer jury-rigged to get its Charge lance operational.</description>
     <graphicData>
-      <texPath>Things/Building/Security/SMC_TurretMechMini_Top</texPath>
+      <texPath>Things/Building/Security/SMC_LancerTurret_top</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <uiIconScale>2</uiIconScale>
     <statBases>
-      <AccuracyTouch>0.82</AccuracyTouch>
-      <AccuracyShort>0.59</AccuracyShort>
-      <AccuracyMedium>0.39</AccuracyMedium>
-      <AccuracyLong>0.21</AccuracyLong>
-      <RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
+      <AccuracyTouch>0.65</AccuracyTouch>
+      <AccuracyShort>0.85</AccuracyShort>
+      <AccuracyMedium>0.85</AccuracyMedium>
+      <AccuracyLong>0.75</AccuracyLong>
+      <RangedWeapon_Cooldown>3.2</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
       <Mass>5</Mass>
       <Flammability>0</Flammability>
@@ -110,15 +112,13 @@
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
-        <defaultProjectile>Bullet_MiniSlug</defaultProjectile>
-        <range>41</range>
-        <soundCast>Shot_MiniSlug</soundCast>
-        <soundCastTail>GunTail_Light</soundCastTail>
+        <defaultProjectile>Bullet_ChargeLance</defaultProjectile>
+        <range>30</range>
+        <soundCast>ChargeLance_Fire</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
         <burstShotCount>1</burstShotCount>
       </li>
     </verbs>
 	</ThingDef>
-	
-
 </Defs>
