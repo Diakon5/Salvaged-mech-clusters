@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.1.31903.286
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModTemplate", "ModTemplate.csproj", "{06C33236-3E25-42B0-B5F4-E22BC46B4E7C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalvageMechs", "SalvageMechs.csproj", "{06C33236-3E25-42B0-B5F4-E22BC46B4E7C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {05019544-C127-4AC4-9E50-3C0055F72ACD}
+		SolutionGuid = {94D081CF-0F65-4BCC-9A13-00109E51FEF3}
 	EndGlobalSection
 EndGlobal
